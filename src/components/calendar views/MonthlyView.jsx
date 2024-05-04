@@ -6,6 +6,15 @@ export default function MonthlyView() {
   //Initial Variables
   const daysInMonthArray = [];
   const date = new Date();
+  const daysOfTheWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thrusday",
+    "Friday",
+    "Saturday",
+  ];
 
   //State to allow the user to change the calendar month and year
   const [month, setMonth] = useState(date.getMonth() + 1);
@@ -37,40 +46,45 @@ export default function MonthlyView() {
     const numBlankBoxes = daysInMonthArray[0].dayInWeek;
     const boxes = Array.from({ length: numBlankBoxes }, (_, index) => index);
 
-    return boxes.map((index) => <Box bg="white" key={index}></Box>);
+    return boxes.map((index) => (
+      <Box bg="light grey" key={index} rounded="md"></Box>
+    ));
   }
 
   return (
     <div>
-      {/** Allows user to change the month and year displayed --Also used for testing purposes */}
-      <form>
-        <label>Month</label>
-        <input
-          onChange={(e) => handleMonth(e.target.value)}
-          className="month"
-        ></input>
-        <label>Year</label>
-        <input
-          onChange={(e) => setYear(e.target.value)}
-          className="year"
-        ></input>
-      </form>
-
-      {/** Calculating the days in the selected month */}
-      {daysInMonth(year, month)}
-      {/** Creating blocks on a simple grid */}
-      <SimpleGrid columns={7} spacing={3}>
-        {calculateBlankBoxes()}
-        {daysInMonthArray.map((day) => {
-          return (
-            <DayBlock
-              day={day.dayNumber}
-              dayInWeek={day.dayInWeek}
-              key={day.number}
-            />
-          );
-        })}
-      </SimpleGrid>
+      <div className="input-form">
+        {/** Allows user to change the month and year displayed --Also used for testing purposes */}
+        <form>
+          <label>Month</label>
+          <input
+            onChange={(e) => handleMonth(e.target.value)}
+            className="month"
+          ></input>
+          <label>Year</label>
+          <input
+            onChange={(e) => setYear(e.target.value)}
+            className="year"
+          ></input>
+        </form>
+      </div>
+      <div>
+        {/** Calculating the days in the selected month */}
+        {daysInMonth(year, month)}
+        {/** Creating blocks on a simple grid */}
+        <SimpleGrid columns={7} spacing={5}>
+          {calculateBlankBoxes()}
+          {daysInMonthArray.map((day) => {
+            return (
+              <DayBlock
+                day={day.dayNumber}
+                dayInWeek={day.dayInWeek}
+                key={day.number}
+              />
+            );
+          })}
+        </SimpleGrid>
+      </div>
     </div>
   );
 }

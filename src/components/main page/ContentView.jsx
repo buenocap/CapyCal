@@ -9,7 +9,7 @@ export default function ContentView() {
     <>
       <Container maxW="container.xl">
         <SimpleGrid columns={2}>
-          <Box>
+          <Box bg="lightgrey" boxShadow="md" rounded="md" p="3">
             <MonthlyView />
           </Box>
           <Box>
