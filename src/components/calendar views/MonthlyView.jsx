@@ -1,11 +1,20 @@
 import { useState } from "react";
 import DayBlock from "./calendar component/DayBlock";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  SimpleGrid,
+  chakra,
+} from "@chakra-ui/react";
 
 export default function MonthlyView() {
   //Initial Variables
   const daysInMonthArray = [];
   const date = new Date();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth() + 1;
   const daysOfTheWeek = [
     "Sunday",
     "Monday",
@@ -26,6 +35,7 @@ export default function MonthlyView() {
     for (let i = 1; i <= num; i++) {
       const d = new Date(`${year}-${month}-${i}`);
       daysInMonthArray.push({
+        fullDate: d.getDate(),
         dayNumber: i,
         dayInWeek: d.getDay(),
         tasks: [],
@@ -47,7 +57,14 @@ export default function MonthlyView() {
     const boxes = Array.from({ length: numBlankBoxes }, (_, index) => index);
 
     return boxes.map((index) => (
-      <Box bg="light grey" key={index} rounded="md"></Box>
+      <Box
+        bg="white"
+        height="80px"
+        width="auto"
+        m={1}
+        p="5px"
+        key={index}
+      ></Box>
     ));
   }
 
@@ -72,18 +89,31 @@ export default function MonthlyView() {
         {/** Calculating the days in the selected month */}
         {daysInMonth(year, month)}
         {/** Creating blocks on a simple grid */}
-        <SimpleGrid columns={7} spacing={5}>
+        <Grid
+          h={"auto"}
+          p={2}
+          templateRows={"repeat(4,1fr)"}
+          templateColumns={"repeat(7,1fr)"}
+          bg={"whitesmoke"}
+          rounded={9}
+          boxShadow={"xl"}
+        >
+          {daysOfTheWeek.map((nameOfDay) => {
+            return <DayBlock day={nameOfDay} key={nameOfDay} />;
+          })}
           {calculateBlankBoxes()}
           {daysInMonthArray.map((day) => {
             return (
               <DayBlock
                 day={day.dayNumber}
-                dayInWeek={day.dayInWeek}
+                selectedMonth={month}
+                currentMonth={currentMonth}
+                currentDay={currentDay}
                 key={day.number}
               />
             );
           })}
-        </SimpleGrid>
+        </Grid>
       </div>
     </div>
   );
