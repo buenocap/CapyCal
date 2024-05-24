@@ -1,7 +1,24 @@
+import { Container, Image, Navbar } from "react-bootstrap";
+import "./styles/Header.css";
+
 export default function Header() {
   return (
-    <div>
-      <h1>CapyCal</h1>
-    </div>
+    <header>
+      <Navbar className="capy-header">
+        <Container fluid>
+          <Navbar.Brand href="#home">
+            <Image
+              alt="application logo"
+              src="./src/assets/CapybaraLogo.png"
+              width={80}
+              height={80}
+              roundedCircle
+              className="d-inline-block"
+            />
+            <h2 className="d-inline-block p-2">CapyCal</h2>
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+    </header>
   );
 }

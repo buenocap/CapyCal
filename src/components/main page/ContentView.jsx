@@ -1,20 +1,17 @@
 //Contains the primary view of the calendar and the widgets bar the end user will primarilly interact with.
 
-import MonthlyView from "../calendar views/MonthlyView";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Col, Container, Row } from "react-bootstrap";
+import CalendarViewNav from "../calendar views/view nagivation/CalendarViewNav";
 
 export default function ContentView() {
   return (
-    //Container with box separation with the calendar and widgets bar
-    <>
-      <Grid h={"auto"} templateColumns="repeat(5,1fr)" gap={2}>
-        <GridItem colSpan={4}>
-          <MonthlyView />
-        </GridItem>
-        <GridItem colSpan={1} bg={"lightcoral"}>
-          <p>Widgets</p>
-        </GridItem>
-      </Grid>
-    </>
+    <Container fluid className="mt-3">
+      <Row>
+        <Col lg={10}>
+          <CalendarViewNav />
+        </Col>
+        <Col lg={2}>Widgets Bar</Col>
+      </Row>
+    </Container>
   );
 }
