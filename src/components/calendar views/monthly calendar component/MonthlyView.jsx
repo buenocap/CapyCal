@@ -69,6 +69,7 @@ export default function MonthlyView() {
             key={daysInMonthArray[finalSet].dateID}
           />
         );
+
         //Since the week won't always end with seven days in it, need to track when the last day of the month is reached to completely stop the loop
         finalSet++;
         if (finalSet == daysInMonthArray.length) {
