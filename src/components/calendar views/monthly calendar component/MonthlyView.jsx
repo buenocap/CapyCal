@@ -9,6 +9,7 @@ export default function MonthlyView() {
   const date = new Date();
   const currentDay = date.getDate();
   const currentMonth = date.getMonth() + 1;
+  const currentYear = date.getFullYear();
 
   //State to allow the user to change the calendar month and year
   const [month, setMonth] = useState(date.getMonth() + 1);
@@ -49,6 +50,8 @@ export default function MonthlyView() {
           currentDay={currentDay}
           currentMonth={currentMonth}
           selectedMonth={month}
+          currentYear={currentYear}
+          selectedYear={year}
           tasks={daysInMonthArray.tasks}
           key={daysInMonthArray[finalSet].dateID}
         />
@@ -65,6 +68,8 @@ export default function MonthlyView() {
             currentDay={currentDay}
             currentMonth={currentMonth}
             selectedMonth={month}
+            currentYear={currentYear}
+            selectedYear={year}
             tasks={daysInMonthArray.tasks}
             key={daysInMonthArray[finalSet].dateID}
           />

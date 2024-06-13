@@ -2,7 +2,6 @@
   background-color: #ccdfec;
 }
 
-.add-task {
-  opacity: 20%;
-  color: black;
+.calendar-day {
+  cursor: pointer;
 }

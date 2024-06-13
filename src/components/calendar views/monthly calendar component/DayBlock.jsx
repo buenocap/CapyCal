@@ -1,67 +1,98 @@
-import { Button, Offcanvas } from "react-bootstrap";
+import { Form, Offcanvas } from "react-bootstrap";
 import "./styles/DayBlock.css";
 import uniqid from "uniqid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DayBlock({
   day,
   currentDay,
   currentMonth,
   selectedMonth,
+  currentYear,
+  selectedYear,
   tasks,
 }) {
-  const [isHovering, setIsHovering] = useState(false);
   const [taskList, setTaskList] = useState(tasks);
   const [show, setShow] = useState(false);
-
-  function handleMouseEnter() {
-    setIsHovering(true);
-  }
-
-  function handleMouseLeave() {
-    setIsHovering(false);
-  }
+  const [overLayTitle, setOverLayTitle] = useState("");
 
   function handleClose() {
     setShow(false);
   }
 
-  function handleShow() {
+  function handleShow(e) {
+    const dayinWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const monthInYear = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const date = new Date(e.dataset.day);
+    let month = monthInYear[date.getMonth()];
+    let dayOfWeek = dayinWeek[date.getDay()];
+    let dayNum = date.getDate();
+
+    setOverLayTitle(`${dayOfWeek}, ${month} ${dayNum}, ${selectedYear}`);
     setShow(true);
   }
 
   return (
-    <td className={"calendar-day"} key={uniqid()} height={100} width={180}>
-      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <>
+      <td
+        className={"calendar-day"}
+        key={uniqid()}
+        data-day={`${selectedYear}-${selectedMonth}-${day}`}
+        height={100}
+        width={180}
+        onClick={(e) => {
+          handleShow(e.target);
+        }}
+      >
         <p
+          data-day={`${selectedYear}-${selectedMonth}-${day}`}
           className={` ${
-            currentDay == day && selectedMonth == currentMonth
+            currentDay == day &&
+            selectedMonth == currentMonth &&
+            selectedYear == currentYear
               ? "activeDay"
               : ""
           }`}
         >
           {day}
         </p>
-        {isHovering && (
-          <div className="d-grid gap-1">
-            <Button
-              variant="secondary"
-              size="sm"
-              className="add-task"
-              onClick={handleShow}
-            >
-              Add Task
-            </Button>
-          </div>
-        )}
-      </div>
+      </td>
 
+      {/**Offcanvas */}
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Add Task</Offcanvas.Title>
+          <Offcanvas.Title>{overLayTitle}</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>Place holder text.</Offcanvas.Body>
+        <Offcanvas.Body>
+          <Form>
+            <Form.Group>
+              <Form.Control type="text" />
+            </Form.Group>
+          </Form>
+        </Offcanvas.Body>
       </Offcanvas>
-    </td>
+    </>
   );
 }
