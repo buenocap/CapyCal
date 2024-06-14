@@ -86,11 +86,29 @@ export default function DayBlock({
           <Offcanvas.Title>{overLayTitle}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Form>
-            <Form.Group>
-              <Form.Control type="text" />
-            </Form.Group>
-          </Form>
+          <form>
+            <label className="mb-3">
+              Enter title:
+              <input
+                name="submitted-title"
+                autoCapitalize="on"
+                type="text"
+              ></input>
+            </label>
+            <label className="mb-3">
+              Enter time:
+              <input name="submitted-time" type="time"></input>
+            </label>
+            <label>
+              <textarea
+                name="event-details"
+                rows={4}
+                cols={40}
+                placeholder="Enter details here"
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
         </Offcanvas.Body>
       </Offcanvas>
     </>
