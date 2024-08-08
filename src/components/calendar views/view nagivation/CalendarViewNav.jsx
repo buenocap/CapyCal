@@ -1,20 +1,21 @@
 import { Tab, Tabs, Image, Container, Stack } from "react-bootstrap";
 import MonthlyView from "../monthly calendar component/MonthlyView";
+import uniqid from "uniqid";
 
 export default function CalendarViewNav() {
   return (
     <Tabs defaultActiveKey={"month"} className="mb-3 justify-content-center">
-      <Tab eventKey={"month"} title={"Monthly"}>
+      <Tab eventKey={"month"} title={"Monthly"} key={uniqid()}>
         <div className="shadow rounded">
           <MonthlyView />
         </div>
       </Tab>
-      <Tab eventKey={"week"} title={"Weekly"}>
+      <Tab eventKey={"week"} title={"Weekly"} key={uniqid()}>
         <Container className=" justify-content-center mb-3">
           <Stack>
             <Image
               alt="Capybara with a hardhat"
-              src="../../../assets/CapyHardHat.png"
+              src="./src/assets/CapybaraDust.png"
               width={300}
               height={300}
               className="m-auto"
@@ -26,12 +27,12 @@ export default function CalendarViewNav() {
           </Stack>
         </Container>
       </Tab>
-      <Tab eventKey={"day"} title={"Daily"}>
+      <Tab eventKey={"day"} title={"Daily"} key={uniqid()}>
         <Container className=" justify-content-center mb-3">
           <Stack>
             <Image
               alt="Capybara with a hardhat"
-              src="../../../assets/CapyHardHat.png"
+              src="./src/assets/CapybaraDust.png"
               width={300}
               height={300}
               className="m-auto"
