@@ -14,7 +14,7 @@ export default function CalendarViewNav() {
           <Stack>
             <Image
               alt="Capybara with a hardhat"
-              src="./src/assets/CapybaraDust.png"
+              src="../../../assets/CapyHardHat.png"
               width={300}
               height={300}
               className="m-auto"
@@ -31,7 +31,7 @@ export default function CalendarViewNav() {
           <Stack>
             <Image
               alt="Capybara with a hardhat"
-              src="./src/assets/CapybaraDust.png"
+              src="../../../assets/CapyHardHat.png"
               width={300}
               height={300}
               className="m-auto"
