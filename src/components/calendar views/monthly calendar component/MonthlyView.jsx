@@ -53,7 +53,7 @@ export default function MonthlyView() {
           currentYear={currentYear}
           selectedYear={year}
           tasks={daysInMonthArray.tasks}
-          key={daysInMonthArray[finalSet].dateID}
+          key={uniqid()}
         />
       );
       finalSet++;
@@ -71,7 +71,7 @@ export default function MonthlyView() {
             currentYear={currentYear}
             selectedYear={year}
             tasks={daysInMonthArray.tasks}
-            key={daysInMonthArray[finalSet].dateID}
+            key={uniqid()}
           />
         );
 
