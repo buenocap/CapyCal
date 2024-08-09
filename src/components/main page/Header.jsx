@@ -9,7 +9,7 @@ export default function Header() {
           <Navbar.Brand href="#home">
             <Image
               alt="application logo"
-              src="public/CapybaraLogo.png"
+              src="static/CapybaraLogo.png"
               width={80}
               height={80}
               roundedCircle

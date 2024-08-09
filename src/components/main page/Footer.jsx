@@ -18,7 +18,7 @@ export default function Footer() {
           <Col className="mx-5">
             <Stack>
               <Image
-                src="public/CapybaraLogo.png"
+                src="static/CapybaraLogo.png"
                 alt="company-logo"
                 rounded
                 width={100}
