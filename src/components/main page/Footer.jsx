@@ -12,7 +12,7 @@ import "./styles/Footer.css";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer fixed="bottom">
       <Container fluid>
         <Row className="capy-footer p-4 text-black">
           <Col className="mx-5">
