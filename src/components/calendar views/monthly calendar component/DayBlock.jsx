@@ -1,4 +1,4 @@
-import { Button, Form, Offcanvas } from "react-bootstrap";
+import { Button, Form, Image, Offcanvas } from "react-bootstrap";
 import "./styles/DayBlock.css";
 import uniqid from "uniqid";
 import { useEffect, useState } from "react";
@@ -140,6 +140,9 @@ export default function DayBlock({
               Cancel
             </Button>
           </Form>
+          <div className="mt-3 d-flex justify-content-center">
+            <Image src="/static/RunningCapybara.png" width={100} />
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
